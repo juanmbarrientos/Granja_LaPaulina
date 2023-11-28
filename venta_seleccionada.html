@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta seleccionada</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="body_white">
+
+<div class="container-fluid contenedor-precio pt-5">
+    <div class="contenedor_valores">
+        <p class="titulo_cards">Venta total del turno</p>
+        <p class="valor" id="totalventas"></p>
+        <p class="titulo_cards" id="fecha"></p>
+        <p class="titulo_cards" id="turno"></p>
+    </div>
+</div>
+
+<div class="container-fluid contenedor-venta-discriminada">
+    <div class="forma-pago">
+        <img src="img/efectivo.png" class="icon_venta" alt="">
+        <p class="titulo_cards mt-1" id="efectivo"></p>
+    </div>
+    <div class="forma-pago">
+        <img src="img/mercadopago.png" class="icon_venta" alt="">
+        <p class="titulo_cards mt-1" id="mercadopago"></p>
+    </div>
+    <div class="forma-pago">
+        <img src="img/pedidosya.png" class="icon_venta" alt="">
+        <p class="titulo_cards mt-1" id="pedidosya"></p>
+    </div>
+</div>
+
+<script>
+    // Recupera los datos almacenados en localStorage
+    const fecha = localStorage.getItem('fecha');
+    const turno = localStorage.getItem('turno');
+    const totalventas = localStorage.getItem('totalventas');
+    const efectivo = localStorage.getItem('efectivo');
+    const mercadopago = localStorage.getItem('mercadopago');
+    const pedidosya = localStorage.getItem('pedidosya');
+
+    // Inserta los datos en los elementos HTML correspondientes
+    document.getElementById('fecha').textContent = `${fecha}`;
+    document.getElementById('turno').textContent = `${turno}`;
+    document.getElementById('totalventas').textContent = `$ ${totalventas}`;
+
+    document.getElementById('efectivo').textContent = `${efectivo}`;
+    document.getElementById('mercadopago').textContent = `${mercadopago}`;
+    document.getElementById('pedidosya').textContent = `${pedidosya}`;
+
+    // Obtén y muestra los datos de los campos específicos de Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyA6pgV-xQmE8rAtzlDXtQ4FcOwPGaUwJUk",
+        authDomain: "dblp-e56db.firebaseapp.com",
+        projectId: "dblp-e56db",
+        storageBucket: "dblp-e56db.appspot.com",
+        messagingSenderId: "661617459106",
+        appId: "1:661617459106:web:c2f4a57e89327af327bcfb"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Supongamos que tienes una colección "formas_pago" en tu base de datos
+    const formasPagoRef = db.collection('formas_pago');
+
+    formasPagoRef.get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // Obtiene los datos de cada documento
+                const formaPago = doc.data().nombre; // Supongamos que tienes un campo "nombre" en tus documentos
+
+                // Inserta los datos en los elementos HTML correspondientes
+                document.getElementById(doc.id.toLowerCase()).textContent = `${formaPago}: ${doc.data().valor}`;
+            });
+        })
+        .catch((error) => {
+            console.error("Error al obtener datos de formas de pago: ", error);
+        });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
