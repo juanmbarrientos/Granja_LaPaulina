@@ -281,7 +281,7 @@ body {
 .row_botones{
     margin-top: 16px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .botones{
@@ -290,9 +290,8 @@ body {
     align-items: center;
     background-color: #FFFFFF;
     border-radius: 8px;
-    width: 200px !important;
-    margin-top: 16px;
-    margin: 4px;
+    width: 27% !important;
+    margin: 8px 2px;
     padding: 12px;
     box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.08); 
 }
