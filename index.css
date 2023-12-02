@@ -164,6 +164,20 @@ body {
     margin: 0px;
 }
 
+.subtitulo_cards{
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0px;
+}
+
+.linea_titulo_card{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
 .valor_gerencia {
     display: flex;
     justify-content: center;
@@ -222,12 +236,23 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #EAFFCE;
+    background-color: #FFFFFF;
     border-radius: 8px;
     height: 48px;
     margin-top: 12px;
     padding: 0px 16px;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.08); 
 }
+
+
+
+.card_notificaciones {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    margin-top: 16px;
+    padding: 12px;
+}
+
 
 
 
