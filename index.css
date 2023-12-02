@@ -171,6 +171,7 @@ body {
     font-size: 32px;
     font-weight: 600;
     line-height: normal;
+    margin: 0;
 }
 
 .linea_titulo {
@@ -183,6 +184,7 @@ body {
 .linea_notificaciones {
     display: flex;
     justify-content: center;
+    margin: 0;
 }
 
 .btn_panel {

@@ -17,7 +17,7 @@ const datosRef = db.collection("datos");
 const notificacionesRef = db.collection("notificaciones");
 
 // Función para obtener los últimos documentos y calcular la suma de totalventas
-function obtenerDatosParaGrafico() {
+async function obtenerDatosParaGrafico() {
     // Obtener los últimos 8 documentos de la colección "datos" para el gráfico
     return datosRef.orderBy("fecha", "asc").limit(8).get();
 }
@@ -64,33 +64,45 @@ function crearGrafico(labels, data) {
 }
 
 // Función principal para obtener y mostrar datos
-function obtenerYMostrarDatos() {
+async function obtenerYMostrarDatos() {
     // Obtener datos para el gráfico
-    obtenerDatosParaGrafico()
-        .then((querySnapshot) => {
-            const labels = [];
-            const data = [];
+    const querySnapshot = await obtenerDatosParaGrafico();
+    const labels = [];
+    const data = [];
 
-            querySnapshot.forEach((doc) => {
-                const fecha = doc.data().fecha;
-                const ventaTotal = Number(doc.data().totalventas);
+    querySnapshot.forEach((doc) => {
+        const fecha = doc.data().fecha;
+        const ventaTotal = Number(doc.data().totalventas);
 
-                if (!isNaN(ventaTotal)) {
-                    // Cambio: Extraer solo el día de la fecha
-                    const fechaCorta = new Date(fecha).toLocaleDateString('es-ES', { day: 'numeric' });
-                    labels.push(fechaCorta);
-                    data.push(ventaTotal);
-                } else {
-                    console.warn(`El documento con fecha ${fecha} tiene un valor no válido para totalventas.`);
-                }
-            });
+        if (!isNaN(ventaTotal)) {
+            // Cambio: Extraer solo el día de la fecha
+            const fechaCorta = new Date(fecha).toLocaleDateString('es-ES', { day: 'numeric' });
+            labels.push(fechaCorta);
+            data.push(ventaTotal);
+        } else {
+            console.warn(`El documento con fecha ${fecha} tiene un valor no válido para totalventas.`);
+        }
+    });
 
-            // Crear el gráfico con los últimos 8 documentos
-            crearGrafico(labels, data);
-        })
-        .catch((error) => {
-            console.error("Error al obtener datos para el gráfico: ", error);
-        });
+    // Crear el gráfico con los últimos 8 documentos
+    crearGrafico(labels, data);
+
+    // Obtener el último documento directamente ordenando por fecha descendente
+    const ultimoDocumento = querySnapshot.docs[querySnapshot.docs.length - 1];
+
+    // Mostrar el resultado en el elemento con ID "resultado_ultimaVenta"
+    const resultadosUltimaVenta = document.getElementById("resultado_ultimaVenta");
+    const totalVentas = ultimoDocumento.data().totalventas;
+    const fecha = ultimoDocumento.data().fecha;
+    const turno = ultimoDocumento.data().turno;
+
+    // Mostrar los valores en el div "resultados_ultimaVenta"
+    resultadosUltimaVenta.innerHTML = `
+        <p class="m-0">Última venta ${fecha} ${turno}</p>
+        <p class="valor_gerencia">$ ${totalVentas}</p>
+    `;
+
+    // Continuar con el resto del código...
 
     // Obtener los últimos 30 documentos de la colección "datos" para calcular acumulativoIntermensual
     datosRef.orderBy("fecha", "asc").limit(30).get().then((querySnapshot) => {
