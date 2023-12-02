@@ -16,77 +16,92 @@ const db = firebase.firestore();
 const datosRef = db.collection("datos");
 const notificacionesRef = db.collection("notificaciones");
 
-// Función para obtener los últimos documentos y mostrar notificaciones
-function obtenerYMostrarDatos() {
-    // Obtener los últimos 30 documentos de la colección "datos" y calcular la suma de totalventas
-    datosRef.orderBy("fecha", "asc").limit(30).get().then((querySnapshot) => {
-        let acumulativoIntermensual = 0;
-        const labels = [];
-        const data = [];
+// Función para obtener los últimos documentos y calcular la suma de totalventas
+function obtenerDatosParaGrafico() {
+    // Obtener los últimos 8 documentos de la colección "datos" para el gráfico
+    return datosRef.orderBy("fecha", "asc").limit(8).get();
+}
 
-        querySnapshot.forEach((doc) => {
-            const fecha = doc.data().fecha;
-            const ventaTotal = Number(doc.data().totalventas);
+// Función para calcular el acumulativo intermensual
+function calcularAcumulativoIntermensual(querySnapshot) {
+    let acumulativoIntermensual = 0;
 
-            if (!isNaN(ventaTotal)) {
-                labels.push(fecha);
-                data.push(ventaTotal);
-            } else {
-                console.warn(`El documento con fecha ${fecha} tiene un valor no válido para totalventas.`);
-            }
+    querySnapshot.forEach((doc) => {
+        const ventaTotal = Number(doc.data().totalventas);
+        acumulativoIntermensual += isNaN(ventaTotal) ? 0 : ventaTotal;
+    });
 
-            acumulativoIntermensual += isNaN(ventaTotal) ? 0 : ventaTotal;
-        });
+    // Mostrar el resultado en el elemento con ID "acumulativoIntermensual"
+    const acumulativoIntermensualElement = document.getElementById("acumulativoIntermensual");
+    acumulativoIntermensualElement.innerHTML = `
+        <p class="m-0">Acumulativo intermensual</p>
+        <p class="valor_gerencia">$ ${acumulativoIntermensual}</p>
+    `;
+}
 
-        // Crear el gráfico de barras
-        const ctx = document.getElementById('miGrafico').getContext('2d');
-        const myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Ventas Totales',
-                    data: data,
-                    backgroundColor: 'orange'
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+// Función para crear el gráfico
+function crearGrafico(labels, data) {
+    // Crear el gráfico de barras
+    const ctx = document.getElementById('miGrafico').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Ventas Totales',
+                data: data,
+                backgroundColor: 'orange'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
             }
-        });
-
-        // Mostrar el resultado en el elemento con ID "acumulativoIntermensual"
-        const acumulativoIntermensualElement = document.getElementById("acumulativoIntermensual");
-        acumulativoIntermensualElement.innerHTML = `
-            <p class="m-0">Acumulativo intermensual</p>
-            <p class="valor_gerencia">$ ${acumulativoIntermensual}</p>
-        `;
-
-        // Mostrar notificaciones
-        mostrarNotificaciones(notificacionesRef);
-
-        // Mostrar el resultado en el elemento con ID "resultado_ultimaVenta"
-        const resultadosUltimaVenta = document.getElementById("resultado_ultimaVenta");
-
-        querySnapshot.forEach((doc) => {
-            const totalVentas = doc.data().totalventas;
-            const fecha = doc.data().fecha;
-            const turno = doc.data().turno;
-
-            // Mostrar los valores en el div "resultados_ultimaVenta"
-            resultadosUltimaVenta.innerHTML = `
-                <p class="m-0">Última venta ${fecha} ${turno}</p>
-                <p class="valor_gerencia">$ ${totalVentas}</p>
-            `;
-        });
-    })
-    .catch((error) => {
-        console.error("Error al obtener datos: ", error);
+        }
     });
+}
+
+// Función principal para obtener y mostrar datos
+function obtenerYMostrarDatos() {
+    // Obtener datos para el gráfico
+    obtenerDatosParaGrafico()
+        .then((querySnapshot) => {
+            const labels = [];
+            const data = [];
+
+            querySnapshot.forEach((doc) => {
+                const fecha = doc.data().fecha;
+                const ventaTotal = Number(doc.data().totalventas);
+
+                if (!isNaN(ventaTotal)) {
+                    // Cambio: Extraer solo el día de la fecha
+                    const fechaCorta = new Date(fecha).toLocaleDateString('es-ES', { day: 'numeric' });
+                    labels.push(fechaCorta);
+                    data.push(ventaTotal);
+                } else {
+                    console.warn(`El documento con fecha ${fecha} tiene un valor no válido para totalventas.`);
+                }
+            });
+
+            // Crear el gráfico con los últimos 8 documentos
+            crearGrafico(labels, data);
+        })
+        .catch((error) => {
+            console.error("Error al obtener datos para el gráfico: ", error);
+        });
+
+    // Obtener los últimos 30 documentos de la colección "datos" para calcular acumulativoIntermensual
+    datosRef.orderBy("fecha", "asc").limit(30).get().then((querySnapshot) => {
+        // Calcular el acumulativo intermensual
+        calcularAcumulativoIntermensual(querySnapshot);
+    }).catch((error) => {
+        console.error("Error al obtener datos para acumulativoIntermensual: ", error);
+    });
+
+    // Mostrar notificaciones
+    mostrarNotificaciones(notificacionesRef);
 }
 
 // Función para mostrar notificaciones
