@@ -19,7 +19,7 @@ const notificacionesRef = db.collection("notificaciones");
 // Función para obtener los últimos documentos y calcular la suma de totalventas
 async function obtenerDatosParaGrafico() {
     // Obtener los últimos 8 documentos de la colección "datos" para el gráfico
-    return datosRef.orderBy("fecha", "asc").limit(8).get();
+    return datosRef.orderBy("fecha", "desc").limit(8).get();
 }
 
 // Función para calcular el acumulativo intermensual
@@ -75,8 +75,8 @@ async function obtenerYMostrarDatos() {
         const ventaTotal = Number(doc.data().totalventas);
 
         if (!isNaN(ventaTotal)) {
-            // Cambio: Extraer solo el día de la fecha
-            const fechaCorta = new Date(fecha).toLocaleDateString('es-ES', { day: 'numeric' });
+            // Cambio: Extraer solo el día de la fecha en formato de dos dígitos
+            const fechaCorta = new Date(fecha + 'T00:00:00').toLocaleDateString('es-ES', { day: '2-digit' });
             labels.push(fechaCorta);
             data.push(ventaTotal);
         } else {
@@ -87,20 +87,27 @@ async function obtenerYMostrarDatos() {
     // Crear el gráfico con los últimos 8 documentos
     crearGrafico(labels, data);
 
-    // Obtener el último documento directamente ordenando por fecha descendente
-    const ultimoDocumento = querySnapshot.docs[querySnapshot.docs.length - 1];
+    // Obtener la fecha más reciente
+    const fechaMasReciente = querySnapshot.docs[0].data().fecha;
 
-    // Mostrar el resultado en el elemento con ID "resultado_ultimaVenta"
+    // Filtrar el documento correspondiente a la fecha más reciente
+    const ultimoDocumento = querySnapshot.docs.find(doc => doc.data().fecha === fechaMasReciente);
+
     const resultadosUltimaVenta = document.getElementById("resultado_ultimaVenta");
-    const totalVentas = ultimoDocumento.data().totalventas;
-    const fecha = ultimoDocumento.data().fecha;
-    const turno = ultimoDocumento.data().turno;
 
-    // Mostrar los valores en el div "resultados_ultimaVenta"
-    resultadosUltimaVenta.innerHTML = `
-        <p class="m-0">Última venta ${fecha} ${turno}</p>
-        <p class="valor_gerencia">$ ${totalVentas}</p>
-    `;
+    if (ultimoDocumento) {
+        const totalVentas = ultimoDocumento.data().totalventas;
+        const fecha = ultimoDocumento.data().fecha;
+        const turno = ultimoDocumento.data().turno;
+
+        // Mostrar los valores en el div "resultados_ultimaVenta"
+        resultadosUltimaVenta.innerHTML = `
+            <p class="m-0">Última venta ${fecha} ${turno}</p>
+            <p class="valor_gerencia">$ ${totalVentas}</p>
+        `;
+    } else {
+        console.warn("No se encontró el documento para la fecha más reciente.");
+    }
 
     // Continuar con el resto del código...
 
