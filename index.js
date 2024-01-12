@@ -16,6 +16,8 @@ document.getElementById("ingresar").addEventListener("click", function() {
     var usuario = document.getElementById("user").value;
     var password = document.getElementById("password").value;
 
+    localStorage.setItem("usuario", usuario);
+
     usuariosRef.where("user", "==", usuario).where("password", "==", password)
         .get()
         .then(function(querySnapshot) {

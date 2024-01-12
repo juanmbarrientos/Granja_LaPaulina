@@ -8,6 +8,8 @@ const firebaseConfig = {
     appId: "1:661617459106:web:c2f4a57e89327af327bcfb"
 };
 
+localStorage.getItem("usuario");
+
 // Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
 
@@ -62,6 +64,29 @@ function crearGrafico(labels, data) {
         }
     });
 }
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Recuperar el usuario almacenado en el localStorage
+    var usuario = localStorage.getItem("usuario");
+
+    // Verificar si el usuario existe
+    if (usuario) {
+        // Insertar el nombre de usuario en el elemento span con id "nombreUsuario"
+        document.getElementById("nombreUsuario").innerText = usuario;
+    } else {
+        // Código para manejar la falta de usuario en el localStorage
+    }
+});
+
+
+
+
+
+
+
+
 
 // Función principal para obtener y mostrar datos
 async function obtenerYMostrarDatos() {
@@ -140,14 +165,15 @@ function mostrarNotificaciones(notificacionesRef) {
             const notificacionDiv = document.createElement('div');
             const docId = doc.id;  // Obtenemos el ID del documento
             notificacionDiv.innerHTML = `
-                <div class="linea_titulo mb-3">
-                    <p class="m-0">${motivo}</p>
-                    <img class="img_notificaciones" src="img/eliminar.svg" alt="" id="eliminar" data-doc-id="${docId}">
-                    <img class="img_notificaciones" src="img/notificacion.svg">
+                <div class="linea_titulo linea_notificaciones">
+                    <p class="tituloCards">${titulo}</p>
+                    <div>
+                        <img class="img_notificaciones" src="img/eliminar.svg" alt="" id="eliminar" data-doc-id="${docId}">
+                        <img class="img_notificaciones" src="img/notificacion.svg">
+                    </div>
                 </div>
-                <p>${titulo}</p>
-                <p><strong>Observación:</strong> ${observacion}</p>`;
-
+                <p class="mensajeNotificacion">${observacion}</p>`;
+            //<p class="m-0">${motivo}</p>
             notificacionesDiv.appendChild(notificacionDiv);
         });
     })

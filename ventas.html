@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial de ventas - Granja La Paulina</title>
+    <title>Ventas - Granja La Paulina</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="modulos/card_notificaciones.css">
     <link rel="stylesheet" href="modulos/estructura.css">
     <link rel="stylesheet" href="modulos/forms_inputs.css">
+    <link rel="stylesheet" href="modulos/fonts.css">
     <link rel="stylesheet" href="index.css"/>
 </head>
 <body class="body_white">
@@ -18,17 +19,39 @@
     <div class="navbar">
         <div class="contenido_navbar_izq">
             <a href="indexGerencia.html"><img src="img/Atras.svg" alt=""></a>
-            <h1 class="titulo_navbar">Historial de ventas</h1>
+            <h1 class="titulo_navbar">Ventas</h1>
         </div>
         <div class="contenido_navbar_der">
             <a href="indexGerencia.html"><img src="img/Home.svg" alt=""></a>
         </div>
     </div>
 
-<div class="container-fluid">
-    <div class="contenedor_ventas"></div>
-    
+<div class="contenido">
+
+    <div class="mb-3">
+        <div class="form-group grupoInput ordenarPor">
+            <label for="turno_" class="titulosFinos">Ordenar por:</label>
+            <select class="form-select form-control inputGenerales" aria-label="Default select example" id="ordenarPor">
+                <option value="az">A - Z</option>
+                <option value="za">Z - A</option>
+                <option value="stock">Stock</option>
+
+            </select>
+        </div>
     </div>
+
+    <div class="card_producto">
+        <img src="img/prueba_img.jpg" alt="" class="img_producto">
+        <span class="textosn">Titulo</span>
+        <div class="venta_producto">
+            <span class="textos">$3000</span>
+            <span class="textos">KG</span>
+            <div class="sumar_producto">+</div>
+        </div>
+    </div>
+
+
+
     
 </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

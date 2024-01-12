@@ -7,63 +7,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cierre de Turno - Granja La Paulina</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="modulos/card_notificaciones.css">
+    <link rel="stylesheet" href="modulos/estructura.css">
+    <link rel="stylesheet" href="modulos/forms_inputs.css">
+    <link rel="stylesheet" href="index.css"/>
 </head>
 
 <body class="body_white">
-    <div class="container mt-5">
-        <div class="logo">
-            <img src="img/Logo_LaPaulina.jpg" alt="" class="logo">
+
+    <div class="navbar">
+        <div class="contenido_navbar_izq">
+            <a href="indexEmpleado.html"><img src="img/Atras.svg" alt=""></a>
+            <h1 class="titulo_navbar">Cierre de turno</h1>
         </div>
-        <form action="">
-            <h2 class="titulo_bg mb-3">Completar su Turno</h2>
-            <div class="mb-3">
-                <div class="form-group grupoInput">
-                    <label for="fecha_" class="form-label">Fecha:</label>
-                    <input type="date" id="fecha_" class="form-control" />
-                </div>
-            </div>
-            <div class="mb-3">
-                <div class="form-group grupoInput">
-                    <label for="turno_" class="form-label">Turno:</label>
-                    <select class="form-select form-control" aria-label="Default select example" id="turno_">
-                        <option selected>Seleccione su turno</option>
-                        <option value="Mañana">Mañana</option>
-                        <option value="Tarde">Tarde</option>
-                    </select>
-                </div>
-            </div>
-            <div class="mb-3">
-                <div class="form-group grupoInput">
-                    <label for="efectivo_" class="form-label">Efectivo</label>
-                    <input type="text" class="form-control" id="efectivo_" oninput="agregarSimboloDolar(this)" />
-                </div>
-            </div>
-            <div class="mb-3">
-                <div class="form-group grupoInput">
-                    <label for="mercadopago_" class="form-label">MercadoPago</label>
-                    <input type="text" class="form-control" id="mercadopago_" oninput="agregarSimboloDolar(this)" />
-                </div>
-            </div>
-            <div class="mb-3">
-                <div class="form-group grupoInput">
-                    <label for="pedidosya_" class="form-label">Pedidos Ya</label>
-                    <input type="text" class="form-control" id="pedidosya_" oninput="agregarSimboloDolar(this)" />
-                </div>
-            </div>
-            <div class="mb-3">
-                <div class="form-group grupoInput">
-                    <label for="totalVentas_" class="form-label">Total venta</label>
-                    <input type="text" class="form-control" id="totalVentas_" oninput="agregarSimboloDolar(this)" />
-                </div>
-            </div>
-            <div class="btn btn-warning" onclick="guardarRegistro()">Guardar Cierre</div> 
-        </form>
+        <div class="contenido_navbar_der">
+            <a href="indexEmpleado.html"><img src="img/Home.svg" alt=""></a>
+        </div>
     </div>
 
-    <div class="container mt-5">
-        <div id="datosGuardados" class="mt-4">
-            <div id="resultado"></div>
+    <div class="contenido">
+        <div class="card">
+                <form action="" class="mx-auto">
+                    <div class="mb-3">
+                        <div class="form-group grupoInput">
+                            <label for="fecha_" class="titulosFinos">Fecha:</label>
+                            <input type="date" id="fecha_" class="form-control inputGenerales" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group grupoInput">
+                            <label for="turno_" class="titulosFinos">Turno:</label>
+                            <select class="form-select form-control inputGenerales" aria-label="Default select example" id="turno_">
+                                <option selected>Seleccione su turno</option>
+                                <option value="Mañana">Mañana</option>
+                                <option value="Tarde">Tarde</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group grupoInput">
+                            <label for="efectivo_" class="titulosFinos">Efectivo</label>
+                            <input type="text" class="form-control inputGenerales" id="efectivo_" oninput="agregarSimboloDolar(this)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group grupoInput">
+                            <label for="mercadopago_" class="titulosFinos">MercadoPago</label>
+                            <input type="text" class="form-control inputGenerales" id="mercadopago_" oninput="agregarSimboloDolar(this)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group grupoInput">
+                            <label for="pedidosya_" class="titulosFinos">Pedidos Ya</label>
+                            <input type="text" class="form-control inputGenerales" id="pedidosya_" oninput="agregarSimboloDolar(this)" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group grupoInput">
+                            <label for="totalVentas_" class="titulosFinos">Total venta</label>
+                            <input type="text" class="form-control inputGenerales" id="totalVentas_" oninput="agregarSimboloDolar(this)" />
+                        </div>
+                    </div>
+                    <div class="botonesAcciones">
+                        <div class="cancelar">Cancelar</div>
+                        <div class="agregar" onclick="guardarRegistro()">Guardar</div>
+                    </div>
+                </form>
+        </div>
+
+        <div class="card mb-3">
+            <div id="datosGuardados">
+                <div id="resultado"></div>
+            </div>
         </div>
     </div>
 

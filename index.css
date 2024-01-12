@@ -6,6 +6,121 @@ body {
     background-color: #FFB400;
 }
 
+
+
+.sumar_producto{
+    display: flex;
+    width: 20px;
+    height: 11px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1px;
+    background:#5CD10D;
+    color: var(--Blanco, #FFF);
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.56px;
+}
+
+.ordenarPor{
+    display: flex;
+    flex-direction: row;
+}
+/*-xxxx*/
+.card{
+    margin-top: 16px;
+    padding: 12px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.08); 
+    display: flex;
+    justify-content: center;
+}
+
+.contenido{
+    padding: 0px 16px;
+}
+
+.titulosFinos{
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.56px; 
+    margin-bottom: 0px;
+    margin-left: 8px;
+}
+
+.botonesAcciones{
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.cancelar{
+    display: flex;
+    width: 104px;
+    padding: 8px 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: var(--Bordo, #9B0020);
+    color: var(--Blanco, #FFF);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.56px;
+}
+
+.agregar{
+    display: flex;
+    width: 104px;
+    padding: 8px 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background:#5CD10D;
+    color: var(--Blanco, #FFF);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.56px;
+}
+
+.form-control::placeholder{
+    color: #D9D9D9;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.56px;
+}
+
+.inputGenerales{
+    width: 268px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .contenedor {
     display: flex;
     justify-content: center;
@@ -84,19 +199,65 @@ body {
 
 .grupoInput {
     margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
 }
+
+
+
+
+
+.tituloCards{
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.56px;
+    margin: 0;
+}
+
+.mensajeNotificacion{
+    color: #000;
+    text-align: center;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+}
+
+.proviNotif{
+    display: inline;
+    justify-content: space-around;
+}
+
+.notificacionIndex{
+    margin-top: 200px;
+}
+
+
+
+
+
+
+
+
 
 .titulo_importante,
 .titulo_bg {
-    font-weight: 600;
+    color: var(--Blanco, #FFF);
     font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
     margin-bottom: 4px;
 }
 
 .titulo_bg {
     background-color: orange;
-    padding: 10px;
-    border-radius: 6px;
+    padding: 8px;
+    border-radius: 4px;
     text-align: center;
     color: white;
 }
@@ -156,6 +317,36 @@ body {
     box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.08); 
 }
 
+.linea_notificaciones{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
+
+.font_saludoHola{
+    color: var(--Blanco, #FFF);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.font_saludoPersona{
+    color: var(--Blanco, #FFF);
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    margin: 0px 0px 16px 38px;
+    padding: 0px;
+}
+
+
+
+
+
+
+
 .titulo_cards, .valor_venta, .valor {
     font-family: Poppins;
     font-size: 16px;
@@ -206,6 +397,8 @@ body {
     width: 100%;
     font-size: 16px;
     font-weight: 500;
+    background-color: #FFA023;
+    color: white;
 }
 
 .botonera {
@@ -254,35 +447,21 @@ body {
 }
 
 
-
-
-.valor {
-    font-size: 56px;
-    font-weight: 700;
-}
-
 .contenedor-venta-discriminada {
-    margin-top: 32px;
+    margin-top: 16px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
 }
 
 .forma-pago {
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
+    margin: 8px;
 }
 
 .icon_venta {
     height: 32px;
-}
-
-.contenedor-precio {
-    height: 240px;
-    background-color: orange;
-    justify-content: center;
-    border-radius: 0 0 16px 16px;
 }
 
 .contenedor_valores {

@@ -8,21 +8,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="modulos/card_notificaciones.css">
+    <link rel="stylesheet" href="modulos/estructura.css">
+    <link rel="stylesheet" href="modulos/forms_inputs.css">
+    <link rel="stylesheet" href="index.css"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="body_white">
+
+    <div class="navbar">
+        <div class="contenido_navbar_izq">
+            <h1 class="titulo_navbar">¡Hola, <span id="nombreUsuario"></span>!</h1>
+        </div>
+        <div class="contenido_navbar_der">
+            <a href="indexEmpleado.html"><img src="img/Logout.svg" alt=""></a>
+        </div>
+    </div>
+    
+
 <div class="container-fluid mt-5">
-    <div class="contenido">
-        <img src="img/Logo_LaPaulina.jpg" alt="Logo La Paulina" class="logo">
-
         <div class="botonera">
-            <a href="cierreTurno.html" target="_parent" class="btn btn-warning btn_panel">Cierre de turno</a>
-            <a target="_parent" class="btn btn-warning btn_panel">Registrar un gasto</a>
-            <a target="_parent" class="btn btn-warning btn_panel">Incluir observación</a>
-            <a href="enviarNotificacion.html" target="_parent" class="btn btn-warning btn_panel">Enviar Notificación</a>
-
-            
+            <a href="cierreTurno.html" target="_parent" class="btn btn_panel">Cierre de turno</a>
+            <a href="egresos.html" target="_parent" class="btn btn_panel">Registrar un gasto</a>
         </div>
     </div>
 </div>

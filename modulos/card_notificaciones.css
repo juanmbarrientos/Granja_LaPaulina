@@ -1,0 +1,39 @@
+.card{
+    margin-top: 16px;
+    padding: 12px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.08); 
+    display: flex;
+    justify-content: center;
+}
+
+.card_notificacionIndex {
+    background-color: #F5F5DC;
+    border-radius: 8px;
+    height: 64px;
+    margin-top: 16px;
+    padding: 6px;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.08); 
+}
+
+
+.venta_producto{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card_producto{
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+    border-radius: 4px;
+    padding: 4px;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.08); 
+    background-color: #FFFFFF;
+}
