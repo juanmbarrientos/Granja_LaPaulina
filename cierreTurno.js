@@ -98,7 +98,7 @@ function mostrarDatosGuardados() {
 
     // Construye un mensaje con los datos y muestre en el div.
     const mensaje = `
-
+    
     <h2 class="titulo_bg">Datos guardado con éxito</h2>
         Fecha: ${fecha}<br>
         Turno: ${turno}<br>
