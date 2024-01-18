@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egresos - Granja La Paulina</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="modulos/card_notificaciones.css">
+    <link rel="stylesheet" href="modulos/estructura.css">
+    <link rel="stylesheet" href="modulos/forms_inputs.css">
+    <link rel="stylesheet" href="index.css"/>
+</head>
+
+<body class="body_white">
+
+    <div class="navbar">
+        <div class="contenido_navbar_izq">
+            <a href="indexEmpleado.html"><img src="img/Atras.svg" alt=""></a>
+            <h1 class="titulo_navbar">Retiro de efectivo</h1>
+        </div>
+        <div class="contenido_navbar_der">
+            <a href="indexEmpleado.html
+            "><img src="img/Home.svg" alt=""></a>
+        </div>
+    </div>
+    
+    <div class="contenido">
+        <div class="card">
+                <div class="form-group grupoInput mx-auto">
+                    <label for="fechaRetiro" class="titulosFinos">Fecha</label>
+                    <input type="date" class="form-control inputGenerales" id="fechaRetiro" placeholder="Elija una fecha"/>
+                </div>
+        
+                <div class="form-group grupoInput mx-auto">
+                    <label for="turnoRetiro" class="titulosFinos">Responsable</label>
+                    <select class="form-select form-control inputGenerales" aria-label="Default select example" id="turnoRetiro">
+                        <option selected>Seleccione el turno</option>
+                        <option value="Mañana">Mañana</option>
+                        <option value="Noche">Noche</option>
+                    </select>
+                </div>
+                
+                <div class="form-group grupoInput mx-auto">
+                    <label for="responsableRetiro" class="titulosFinos">Responsable</label>
+                    <select class="form-select form-control inputGenerales" aria-label="Default select example" id="responsableRetiro">
+                        <option selected>Seleccione persona</option>
+                        <option value="Carlos">Carlos</option>
+                        <option value="Jorge">Jorge</option>
+                        <option value="Evelyn">Evelyn</option>
+                        <option value="Juan">Juan</option>
+                    </select>
+                </div>
+                
+                <div class="form-group grupoInput mx-auto">
+                    <label for="importeRetiro" class="titulosFinos">Importe</label>
+                    <input type="text" class="form-control inputGenerales" id="importeRetiro" placeholder="$" oninput="agregarSimboloDolar(this)"/>
+                </div>
+                
+                <div class="form-group grupoInput mx-auto">
+                    <label for="observacionesRetiro" class="titulosFinos">Observaciones</label>
+                    <input type="text" class="form-control inputGenerales" id="observacionesRetiro" placeholder="Ej: Retiró $500 de la mañana" />
+                </div>
+ 
+                <div class="botonesAcciones">
+                    <div class="cancelar">Cancelar</div>
+                    <div class="agregar">Guardar</div>
+                </div>
+
+            </div>
+          
+            <div class="col-12 col-md-6 card_notificacionIndex" id="cardOperacionExitosa">
+
+            </div>
+    </div>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore-compat.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+    <script src="retiros.js"></script>
+</body>
+
+</html>

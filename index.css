@@ -222,7 +222,7 @@ body {
     text-align: center;
     font-size: 10px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     line-height: normal;
     margin: 0;
 }
@@ -504,4 +504,12 @@ body {
 
 .img_boton{
     width: 56px ;
+}
+
+.espacio_notif1{
+    margin-bottom: 6px;
+}
+
+.espacio_notif2{
+    margin-bottom: 16px;
 }
