@@ -85,32 +85,14 @@ window.onload = function () {
 
 // MOSTRAR LOS DATOS QUE SE GUARDARON
 function mostrarDatosGuardados() {
-    const datosGuardadosDiv = document.getElementById("datosGuardados");
-    const resultadoDiv = document.getElementById("resultado");
-
-    // Recupera los datos guardados, puedes cambiar esto según cómo estés almacenando los datos.
-    const fecha = document.getElementById("fecha_").value;
-    const turno = document.getElementById("turno_").value;
-    const efectivo = document.getElementById("efectivo_").value;
-    const mercadopago = document.getElementById("mercadopago_").value;
-    const pedidosya = document.getElementById("pedidosya_").value;
-    const totalVentas = document.getElementById("totalVentas_").value;
-
-    // Construye un mensaje con los datos y muestre en el div.
-    const mensaje = `
-    
-    <h2 class="titulo_bg">Datos guardado con éxito</h2>
-        Fecha: ${fecha}<br>
-        Turno: ${turno}<br>
-        Efectivo: ${efectivo}<br>
-        MercadoPago: ${mercadopago}<br>
-        Pedidos Ya: ${pedidosya}<br>
-        Total Ventas: ${totalVentas}<br>
-    `;
-    resultadoDiv.innerHTML = mensaje;
-
-    // Muestra el div de datos guardados.
-    datosGuardadosDiv.style.display = "block";
+    const notificacionDiv = document.getElementById('cardOperacionExitosa');
+        notificacionDiv.innerHTML = `
+            <div class="linea_titulo">
+                <p class="tituloCards espacio_notif1">Notificación</p>
+                <img class="img_notificaciones" src="img/check.svg">
+            </div>
+            <p class="mensajeNotificacion espacio_notif2">El retiro se guardó correctamente.</p>
+        `;
 
     // Limpia los campos después de mostrar los datos guardados
     limpiarCampos();

@@ -14,7 +14,6 @@
 </head>
 
 <body class="body_white">
-
     <div class="navbar">
         <div class="contenido_navbar_izq">
             <a href="indexEmpleado.html"><img src="img/Atras.svg" alt=""></a>
@@ -58,7 +57,7 @@
                     </div>
                     <div class="mb-3">
                         <div class="form-group grupoInput">
-                            <label for="pedidosya_" class="titulosFinos">Pedidos Ya</label>
+                            <label for="pedidosya_" class="titulosFinos">Envios</label>
                             <input type="text" class="form-control inputGenerales" id="pedidosya_" oninput="agregarSimboloDolar(this)" />
                         </div>
                     </div>
@@ -74,13 +73,7 @@
                     </div>
                 </form>
         </div>
-
-        <div class="card mb-3">
-            <div id="datosGuardados">
-                <div id="resultado"></div>
-            </div>
-        </div>
-    </div>
+        <div class="col-12 col-md-6 card_notificacionIndex" id="cardOperacionExitosa"></div>
 
     <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore-compat.js"></script>
@@ -89,5 +82,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
     <script src="cierreTurno.js"></script>
 </body>
-
 </html>
