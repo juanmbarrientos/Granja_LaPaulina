@@ -87,7 +87,7 @@ function mostrarDatosGuardados() {
         notificacionDiv.innerHTML = `
             <div class="linea_titulo">
                 <p class="tituloCards espacio_notif1">Notificación</p>
-                <img class="img_notificaciones" src="../img/check.svg">
+                <img class="img_notificaciones" src="./img/Check.svg">
             </div>
             <p class="mensajeNotificacion espacio_notif2">El cierre se guardó correctamente.</p>
         `;
