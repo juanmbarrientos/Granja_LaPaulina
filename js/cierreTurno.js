@@ -32,7 +32,6 @@ function guardarRegistro() {
         totalventas: totalVentas,
     })
     .then(() => {
-        alert("Datos guardados con éxito");
         // Llama a la función para mostrar los datos
         mostrarDatosGuardados(); 
     })
