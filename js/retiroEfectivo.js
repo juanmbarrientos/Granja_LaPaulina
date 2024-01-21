@@ -48,7 +48,7 @@ document.querySelector('.agregar').addEventListener('click', function () {
         notificacionDiv.innerHTML = `
             <div class="linea_titulo">
                 <p class="tituloCards espacio_notif1">Notificación</p>
-                <img class="img_notificaciones" src="img/check.svg">
+                <img class="img_notificaciones" src="../img/check.svg">
             </div>
             <p class="mensajeNotificacion espacio_notif2">El retiro se guardó correctamente.</p>
         `;
