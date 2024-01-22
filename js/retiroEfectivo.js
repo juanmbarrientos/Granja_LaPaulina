@@ -13,6 +13,18 @@ firebase.initializeApp(firebaseConfig);
 // Obtén una referencia a la base de datos Firestore
 const db = firebase.firestore();
 
+function mostrarDatosGuardados() {
+    const notificacionDiv = document.getElementById('cardOperacionExitosa');
+        notificacionDiv.innerHTML = `
+            <div class="linea_titulo">
+                <p class="tituloCards espacio_notif1">Notificación</p>
+                <img class="img_notificaciones" src="./img/Check.svg">
+            </div>
+            <p class="mensajeNotificacion espacio_notif2">El egreso se guardó correctamente.</p>
+        `;
+}
+
+
 // Función para agregar el evento de clic al botón de guardar
 document.querySelector('.agregar').addEventListener('click', function () {
     // Obtiene los valores de los campos de entrada
@@ -43,16 +55,7 @@ document.querySelector('.agregar').addEventListener('click', function () {
         importeRetiro.value = '';
         observacionesRetiro.value = '';
 
-        // Agrega el código HTML después de guardar exitosamente
-        const notificacionDiv = document.getElementById('cardOperacionExitosa');
-        notificacionDiv.innerHTML = `
-            <div class="linea_titulo">
-                <p class="tituloCards espacio_notif1">Notificación</p>
-                <img class="img_notificaciones" src="./img/Check.svg">
-            </div>
-            <p class="mensajeNotificacion espacio_notif2">El retiro se guardó correctamente.</p>
-        `;
-        // Puedes realizar acciones adicionales después de insertar el código
+        mostrarDatosGuardados();
     })
     .catch(function(error) {
         console.error("Error al guardar el documento: ", error);
