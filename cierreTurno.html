@@ -45,25 +45,37 @@
                     </div>
                     <div class="mb-3">
                         <div class="form-group grupoInput">
-                            <label for="efectivo_" class="titulosFinos">Efectivo</label>
+                            <label for="efectivo_" class="titulosFinos">Total ingresos en Efectivo</label>
                             <input type="text" class="form-control inputGenerales" id="efectivo_" oninput="agregarSimboloDolar(this)" />
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="form-group grupoInput">
-                            <label for="mercadopago_" class="titulosFinos">MercadoPago</label>
+                            <label for="mercadopago_" class="titulosFinos">Total ingresos en MercadoPago</label>
                             <input type="text" class="form-control inputGenerales" id="mercadopago_" oninput="agregarSimboloDolar(this)" />
                         </div>
                     </div>
-                    <div class="mb-3">
+ 
+ 
+ 
+ 
+                    <div class="mb-3 mt-5">
                         <div class="form-group grupoInput">
-                            <label for="pedidosya_" class="titulosFinos">Envios</label>
-                            <input type="text" class="form-control inputGenerales" id="pedidosya_" oninput="agregarSimboloDolar(this)" />
+                            <label for="cantidadEnvios_" class="titulosFinos">Cantidad de envios</label>
+                            <input type="text" class="form-control inputGenerales" id="cantidadEnvios_"/>
                         </div>
                     </div>
+
                     <div class="mb-3">
                         <div class="form-group grupoInput">
-                            <label for="totalVentas_" class="titulosFinos">Total venta</label>
+                            <label for="totalEnvios_" class="titulosFinos">Ingresos por envios</label>
+                            <input type="text" class="form-control inputGenerales" id="totalEnvios_" oninput="agregarSimboloDolar(this)" />
+                            <small>Sumar el importe de los pedidos enviados</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 mt-5">
+                        <div class="form-group grupoInput">
+                            <label for="totalVentas_" class="titulosFinos">Total ventas</label>
                             <input type="text" class="form-control inputGenerales" id="totalVentas_" oninput="agregarSimboloDolar(this)" />
                         </div>
                     </div>

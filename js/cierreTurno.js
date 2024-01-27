@@ -18,7 +18,12 @@ function guardarRegistro() {
     const turno = document.getElementById("turno_").value;
     const efectivo = parseFloat(document.getElementById("efectivo_").value.replace("$", "")) || 0;
     const mercadopago = parseFloat(document.getElementById("mercadopago_").value.replace("$", "")) || 0;
-    const pedidosya = parseFloat(document.getElementById("pedidosya_").value.replace("$", "")) || 0;
+
+
+    const cantidadEnvios_ = parseFloat(document.getElementById("cantidadEnvios_").value.replace("$", "")) || 0;
+    const totalEnvios_ = parseFloat(document.getElementById("totalEnvios_").value.replace("$", "")) || 0;
+    
+    
     const totalVentas = parseFloat(document.getElementById("totalVentas_").value.replace("$", "")) || 0;
     const nombreDocumento = `${fecha}_${turno}`;
 
@@ -28,7 +33,10 @@ function guardarRegistro() {
         turno: turno,
         efectivo: efectivo,
         mercadopago: mercadopago,
-        pedidosya: pedidosya,
+
+        cantidadEnvios_: cantidadEnvios_,
+        totalEnvios_: totalEnvios_,
+
         totalventas: totalVentas,
     })
     .then(() => {
@@ -45,7 +53,10 @@ function limpiarCampos() {
     document.getElementById("turno_").value = "Seleccione su turno";
     document.getElementById("efectivo_").value = "";
     document.getElementById("mercadopago_").value = "";
-    document.getElementById("pedidosya_").value = "";
+    
+    document.getElementById("cantidadEnvios_").value = "";
+    document.getElementById("totalEnvios_").value = "";
+
     document.getElementById("totalVentas_").value = "";
 }
 
@@ -62,10 +73,13 @@ function sumarYMostrarTotal() {
     // Obtener los valores de los campos
     const efectivo = parseFloat(document.getElementById("efectivo_").value.replace("$", "")) || 0;
     const mercadopago = parseFloat(document.getElementById("mercadopago_").value.replace("$", "")) || 0;
-    const pedidosya = parseFloat(document.getElementById("pedidosya_").value.replace("$", "")) || 0;
+
+   // const pedidosya = parseFloat(document.getElementById("pedidosya_").value.replace("$", "")) || 0;
 
     // Sumar los valores
-    const totalVentas = efectivo + mercadopago + pedidosya;
+    const totalVentas = efectivo + mercadopago;
+
+    //Suma de todos const totalVentas = efectivo + mercadopago + pedidosya;
 
     // Mostrar el resultado en el campo "Total Ventas" con el símbolo "$"
     document.getElementById("totalVentas_").value = "$" + totalVentas.toFixed(2);
