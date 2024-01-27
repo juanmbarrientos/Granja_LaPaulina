@@ -21,7 +21,7 @@ const notificacionesRef = db.collection("notificaciones");
 // Función para obtener los últimos documentos y calcular la suma de totalventas
 async function obtenerDatosParaGrafico() {
     // Obtener los últimos 8 documentos de la colección "datos" para el gráfico
-    return datosRef.orderBy("fecha", "desc").limit(8).get();
+    return datosRef.orderBy("fecha", "desc").limit(10).get();
 }
 
 // Función para calcular el acumulativo intermensual
@@ -36,7 +36,7 @@ function calcularAcumulativoIntermensual(querySnapshot) {
     // Mostrar el resultado en el elemento con ID "acumulativoIntermensual"
     const acumulativoIntermensualElement = document.getElementById("acumulativoIntermensual");
     acumulativoIntermensualElement.innerHTML = `
-        <p class="m-0">Acumulativo intermensual</p>
+        <p class="m-0">Últimos 56 turnos (30 días)</p>
         <p class="valor_gerencia">$ ${acumulativoIntermensual}</p>
     `;
 }
@@ -137,7 +137,7 @@ async function obtenerYMostrarDatos() {
     // Continuar con el resto del código...
 
     // Obtener los últimos 30 documentos de la colección "datos" para calcular acumulativoIntermensual
-    datosRef.orderBy("fecha", "asc").limit(30).get().then((querySnapshot) => {
+    datosRef.orderBy("fecha", "desc").limit(56).get().then((querySnapshot) => {
         // Calcular el acumulativo intermensual
         calcularAcumulativoIntermensual(querySnapshot);
     }).catch((error) => {
