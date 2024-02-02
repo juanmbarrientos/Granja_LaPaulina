@@ -38,7 +38,7 @@ function guardarDatos() {
         };
 
         // Generar un título para el documento usando la categoría e importe
-        const tituloDocumento = `${categoria}_${fecha}_${importe}`;
+        const tituloDocumento = `${fecha}_${importe}_${categoria}`;
 
         // Guardar los datos en la colección "gastos" con el título personalizado
         db.collection('gastos').doc(tituloDocumento).set(data)
